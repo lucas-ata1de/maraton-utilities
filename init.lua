@@ -158,16 +158,23 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
+
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- ícones bonitos
     config = function()
-      require('nvim-tree').setup()
+      require('nvim-tree').setup {
+        filters = {
+          dotfiles = true, -- <-- ESSA LINHA ESCONDE OS ARQUIVOS OCULTOS!
+        },
+      }
 
+      vim.keymap.set('n', '<leader>et', '<cmd>NvimTreeFocus<CR>', { desc = 'Focus on/off NvimTree' })
       -- Atalho para abrir/fechar a árvore de arquivos com <leader>e
-      vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
+      vim.keymap.set('n', '<leader>ee', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle on/off file tree' })
     end,
   },
+
   {
     'NTBBloodbath/doom-one.nvim',
     lazy = false,
