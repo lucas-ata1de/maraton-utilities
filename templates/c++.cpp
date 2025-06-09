@@ -1,6 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
+#define endl "\n"
+
+
+void printv(const auto& v){ for(auto i : v) cout << i << " ";cout << endl;}
+
+void printm(const auto& m){ for(const auto& rows : m){for(const auto& item : rows){cout << item << " ";}cout << endl;}}
 
 void test_case(){
 
